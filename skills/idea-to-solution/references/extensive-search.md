@@ -1,51 +1,51 @@
-# 广泛候选池搜索流程
+# Broad Candidate-Pool Search
 
-在 JTBD 与产品拆解之后，用多角度查询、候选池、去重、分类、深读和检索记录扩大召回。完整流程只在广泛搜索确实有决策价值时启用；不把固定 Top N 或反复确认移入 Idea 阶段。
+After the JTBD and product breakdown, use varied queries, a candidate pool, deduplication, classification, deeper review, and a search log to broaden discovery. Run this full process only when a broad candidate pool can improve the decision. Do not move a fixed Top N or repeated confirmation into the idea stage.
 
-仅当用户明确要求完整/广泛搜索，或 `search_breadth=extensive` 时运行。常规 `focused`/`broad` 仍用动态搜索策略；测试中明确指定本模式。不要为了完成格式而伪造查询、结果数、配额或候选字段。
+Use this mode only when the user explicitly requests extensive search or sets `search_breadth=extensive`. For ordinary `focused` or `broad` tasks, use the dynamic search strategy. Invoke this mode explicitly during testing. Do not fabricate queries, result counts, quotas, or candidate fields to satisfy a format.
 
-## 1. 锁定检索目标
+## 1. Define the Search Target
 
-在搜索前记录 JTBD、输入→结果、会改变选型的歧义、硬约束、目标形态（完整应用/多能力方案/组件/API/替代流程）、排除项与本轮研究预算。用户要求跳过追问或现有信息足够时直接继续；只在缺失信息使搜索方向互斥且无法并行时追问。能力拆解是检索线索，不是每能力一个仓库的配额。
+Before searching, record the JTBD, input-to-outcome flow, ambiguities that could change selection, hard constraints, target form (complete application, multi-capability solution, component, API, or alternative workflow), exclusions, and research budget. Continue directly when the user asks to skip follow-up questions or the current information is sufficient. Ask only when missing information creates mutually exclusive directions that cannot be searched in parallel. Capability breakdown is a search aid, not a quota of one repository per capability.
 
-## 2. 规划并执行 5–10 组有目的的查询
+## 2. Plan and Run 5–10 Purposeful Query Groups
 
-先写每组的召回目的，实际执行后记录查询词、入口和是否有用。用以下不同镜头组合，而非仅改一个词：
+State the recall goal for each query group. After running it, record the query terms, search entry point, and whether it helped. Combine different search angles rather than changing only one term:
 
-1. **短产品类别**：整体 JTBD 的常见产品名，避免多功能词交集过窄。
-2. **同义词/相邻场景**：用户说法、开发者术语、相邻行业命名。
-3. **场景与形态**：个人/本地/自托管、应用/插件/框架/SDK 等。
-4. **多能力交集**：寻找可一次覆盖几个关键结果的项目。
-5. **最关键结果**：平台名加具体输出，找专用小项目。
-6. **来源原生与替代路线**：官方 API、内建功能或更简单流程。
-7. **种子扩展**：从有希望项目的 topics、README 词汇、相关项目扩展。
+1. **Short product category:** a common product name for the whole JTBD, avoiding an overly narrow intersection of feature terms.
+2. **Synonyms and adjacent situations:** user phrasing, developer terminology, and naming in nearby industries.
+3. **Situation and form:** personal/local/self-hosted, application/plugin/framework/SDK, and similar distinctions.
+4. **Multi-capability intersection:** projects that may cover several key outcomes at once.
+5. **Key outcome:** platform name plus a concrete output to find specialist projects.
+6. **Source-native and alternative routes:** official APIs, built-in features, and simpler workflows.
+7. **Seed expansion:** topics, README terms, and related projects from promising candidates.
 
-每组可以覆盖多个镜头，但不能只把全部功能词塞进同一个查询。原流程建议每组查看 30–50 个结果；若工具支持分页且当前研究预算允许，取这个量级。工具只显示更少结果、截断或限流时记录实际可见数，不把未读的结果算入候选池；改用简短查询或另一搜索入口补召回。不要重复无效查询来凑到 5 组。
+A query group may cover several angles, but do not put every feature term into one query. The original process suggests reviewing 30–50 results per group when pagination and the research budget allow. If a tool exposes fewer results, truncates, or rate-limits, record the number actually visible; do not count unread results as candidates. Use a shorter query or another search entry point to improve recall. Do not repeat ineffective queries just to reach five groups.
 
-## 3. 建立可检查的候选池
+## 3. Build an Auditable Candidate Pool
 
-把实际看见的结果按规范化 `owner/repo` 合并；记录来源查询、URL、描述、Stars、是否归档、公开状态、语言、更新时间、topics、license，以及首次判断的类型。字段拿不到写“未取到”。单次搜索摘要只能给“可能相关”，不直接当作功能证据。
+Deduplicate results by normalized `owner/repo`. Record the source query, URL, description, Stars, archive status, visibility, language, update date, topics, license, and first-pass type. Write “not available” for missing fields. A search snippet alone supports only “possibly relevant,” not a feature claim.
 
-按三层处理，而不是一刀切：
+Use three layers instead of a single cutoff:
 
-- **基础排除**：明显无关、空壳、失效镜像、已归档且无法使用、违反硬约束的候选；逐项保留排除理由。若归档项目仍有参考价值，可保留在参考层，不冒充当前可直接用的整品。
-- **保守成熟池**：公开、未归档，且有可核查的维护与使用迹象。可额外记录 Stars 至少 100 的子集，用于观察候选分布，但不把 Star 数当成准入或成熟度证明。
-- **直接契合例外池**：Stars 低于 100、未取得 Stars 或用户个人 Stars 中的项目，只要直接覆盖关键结果就继续核查，并在最终结果标记其成熟度风险。严格池不能悄悄吞掉这些候选。
+- **Basic exclusions:** clearly unrelated projects, empty shells, dead mirrors, archived projects that cannot be used, and projects that violate hard constraints. Keep the reason for each exclusion. An archived project with reference value may remain in a reference layer, but must not be presented as a currently adoptable complete product.
+- **Conservative maturity pool:** public, non-archived candidates with verifiable signs of maintenance and use. You may separately record the subset with at least 100 Stars to observe the candidate distribution, but Star count is not an admission rule or proof of maturity.
+- **Direct-fit exceptions:** candidates under 100 Stars, with unavailable Star data, or from the user's Stars remain eligible when they directly cover a key outcome. Keep investigating and flag maturity risks in the final result. The strict pool must not silently discard them.
 
-用户已经允许读取个人 Stars 时，先将其作为个人候选入口；公开候选池按上面方式补足。用户选择跳过时直接公开检索。不假称遍历了无法访问的 Stars。
+When the user has authorized access to personal Stars, use them as a first candidate source and supplement them with public results. If the user skips Stars, search public sources directly. Do not claim to have searched Stars you could not access.
 
-## 4. 去噪、分类与重排
+## 4. Reduce Noise, Classify, and Rerank
 
-先剔除关键词偶然命中、只有资料清单却被误当产品、许可/部署已明确不适用的项目。把候选分为完整应用、多能力子系统、库/SDK、平台 API、目录/研究资料、替代工作流；一个项目可覆盖多个能力。
+Remove accidental keyword matches, documentation lists mistaken for products, and projects whose licenses or deployment clearly do not fit. Classify candidates as complete applications, multi-capability subsystems, libraries/SDKs, platform APIs, directories/research materials, or alternative workflows. One project may cover multiple capabilities.
 
-对有希望的短名单按目标相关性、场景适用性、维护活跃度、工程成熟度和社区信号相对重排；前两项优先，Stars 只作为弱信号。每项给“强/中/弱/未知”和一句证据，再比较；不要对缺失数据编造小数分数。核心约束失败者不得因高 Stars 排首位。相同结果下，优先剩余维护工作更少的个人使用路线。保留一个可能推翻首选的不同形态候选。
+Rerank promising candidates for goal relevance, fit to the situation, maintenance activity, engineering maturity, and community signals. The first two factors matter most; Stars are only a weak signal. Give each factor a simple label such as “strong,” “medium,” “weak,” or “unknown” with one sentence of evidence, then compare. Do not make up decimal scores for missing data. A candidate that violates a core constraint must not rank first because of high Stars. For the same outcome, prefer a personal-use route with less remaining maintenance. Keep one candidate in a different form that could overturn the leading choice.
 
-## 5. 深读与反证
+## 5. Read Deeply and Look for Counterevidence
 
-对最终入选或可能推翻首选的项目，至少核查 README 定位、关键功能/快速开始、近期维护或发布迹象；再看许可、部署、外部服务、隐私与接口条件。具体能力需要官方文档/相关文件直接支持。若最关键结果仍无直接证据，追加一次跨入口专用候选检查。区分 README 声称、代码证据和真实运行；本 Skill 不运行候选，不能自称运行通过。
+For finalists and candidates that could overturn the first choice, at minimum verify the README's stated purpose, key features or quick start, and recent maintenance or release signals. Also check the license, deployment, external services, privacy, and interface requirements. A specific capability needs direct support from official documentation or relevant files. If the key outcome still lacks direct evidence, do one focused search for a specialist through another entry point. Distinguish README claims, code evidence, and actual runtime results. This Skill does not run candidates and must not claim a successful runtime test.
 
-## 6. 交付与停止
+## 6. Deliver and Stop
 
-在 Idea/JTBD → 拆解 → 候选 → 缺口 → 路线结构中，增加一个紧凑的“检索审计”区：各查询目的、实际可见结果数（能观察到时）、去重数、保守成熟池数、直接契合例外数、短名单数、工具失败及未查边界。候选介绍写明“是什么、为什么适合此 Idea、不能做什么、采用后还要维护什么”，并按当前目标给相对排序；不为 Top N 凑数。
+Within the Idea/JTBD → breakdown → candidates → gaps → routes structure, add a compact **search audit**: query purposes, visible result counts when available, deduplicated count, conservative maturity pool, direct-fit exceptions, shortlist size, tool failures, and unsearched boundaries. For each candidate, say what it is, why it fits this idea, what it cannot do, and what the user would still need to maintain. Rank by the current goal; do not pad the list to reach a Top N.
 
-只有当查询确实执行、结果实际进入候选池、短名单完成证据核查时，才称完成本模式。若限流、连接器错误或用户预算中断，则诚实标注“候选池流程部分完成”，展示已做的步骤与可能漏项。连续查询仅重复已有候选或关键路线已有足够证据时，可提前停止，并说明未达到原建议的查询/结果量；多搜本身不是成功。
+Call this mode complete only when the queries were actually run, results entered the candidate pool, and shortlist evidence was checked. If rate limits, connector errors, or the user's budget interrupt the process, label it “candidate-pool process partially completed” and show completed steps and likely omissions. Stop early when later queries only repeat candidates or the key routes already have sufficient evidence, and explain that the suggested query or result volume was not reached. More searching is not success by itself.

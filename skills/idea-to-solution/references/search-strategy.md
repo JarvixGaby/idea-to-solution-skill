@@ -1,46 +1,46 @@
-# 搜索策略
+# Search Strategy
 
-## 搜索简报与环境检查
+## Search Brief and Environment Check
 
-产品拆解和思路收敛后，再检查当前会话实际可用的 GitHub 仓库搜索、文件读取、代码搜索和网页搜索能力；记录缺失与访问范围。把用户给的种子仓库当成候选与术语来源，不默认它已解决目标。
+After product breakdown and convergence, inspect the GitHub repository search, file reading, code search, and web search tools actually available in the current session. Record missing tools and access limits. Treat a repository supplied by the user as a candidate and source of terminology, not as proof that the goal is solved.
 
-## 用户 Stars 优先入口
+## Search the User's Stars First
 
-先检查当前工具是否能**只读**列出当前用户已 Star 的仓库；已连接 GitHub 并不等于当前连接器有 Stars 读取能力。可用时先在该列表中找整品、多能力项目和关键组件，并按用户目标核查，而不是按 Star 时间或数量直接推荐。Stars 是用户兴趣/熟悉度信号，不是成熟度证据；用户明确不想用 Stars 时跳过。
+First check whether the current tools can **read-only** list repositories the user has starred. A connected GitHub account does not necessarily mean the connector can read Stars. If available, search that list for complete products, multi-capability projects, and key components, then verify them against the user's goal. Do not recommend based on Star recency or count. Stars indicate user interest or familiarity, not maturity. Skip this source if the user says not to use Stars.
 
-若未登录、权限不足或工具不支持读取 Stars，简要说明具体状态；不要要求用户在对话中提交令牌，也不要从公开资料猜测其私人 Stars。用户明确要求“仅查我的 Stars”时，说明无法继续该范围并询问连接或改用公开搜索；其他任务可直接用公开 GitHub 搜索完成，避免为可选个性化入口中断整条研究链。若 Stars 没有相关结果，或已有结果无法充分覆盖核心目标、缺乏可信证据/可比较的备选，也扩大公开搜索；报告中区分“来自你的 Stars”和“公开搜索发现”。不要声称遍历了未实际读取的全部 Stars。
+If the user is not connected, lacks permission, or the tools cannot read Stars, briefly explain the specific state. Do not ask the user to paste a token or guess their private Stars from public information. If the user explicitly says “search only my Stars,” explain that the search cannot continue in that scope and ask whether to connect access or switch to public search. For other tasks, proceed with public GitHub search after noting the limitation; do not interrupt the research flow for optional personalization. If the Stars contain no relevant result, do not adequately cover the core goal, lack credible evidence, or lack useful alternatives, expand to public search. Distinguish “from your Stars” from “found in public search” in the report. Do not claim to have searched every Star unless the list was actually read in full.
 
-简报列出本轮要验证的核心能力、目标平台/部署/许可约束、完整方案或多能力项目的可能性、已知种子，以及高风险缺口。每类查询有明确目的。相对普通“直接搜关键词”，应增加 JTBD 同义表达、跨能力组合、种子扩展、负面发现的再验证和来源核查；是否有改进应通过同题对照评估，不能只凭查询更多就声称更好。
+The search brief should list the core outcomes to verify, target platform/deployment/license constraints, the possibility of a complete or multi-capability solution, known seed projects, and high-risk gaps. Each query group needs a clear purpose. Compared with a direct keyword search, add JTBD synonyms, cross-capability combinations, seed expansion, rechecks for negative findings, and source verification. Evaluate whether this improves results through same-prompt comparisons; more queries alone do not prove better search.
 
-把搜索简报转成少量“来源/输入 → 目标产物”的覆盖格。例如“视频链接 → 带时间戳文本”“网页链接 → 保留图片的 Markdown”。一个综合仓库可能覆盖多个格，但若它只支持下载媒体，不能据此认定已解决字幕或文字稿。优先检查核心格与会改变方案选择的高风险格，不机械穷举所有平台组合。歧义造成两种产物时保留两格，搜索可先共用宽词，再核查差异。
+Turn the brief into a small coverage grid of “source/input → desired output,” such as “video link → timestamped transcript” or “web page → Markdown with images preserved.” One integrated repository may cover several cells, but a media downloader alone does not prove transcript or caption support. Prioritize core outcomes and high-risk gaps that could change the route; do not enumerate every possible platform combination mechanically. Keep two cells when ambiguity implies different outputs. Search them with shared broad terms first, then verify the differences.
 
-## 查询设计
+## Query Design
 
-每组查询说明要解决的召回盲点，无须把完整查询日志展示给用户。先检索能覆盖整个 JTBD 的产品及能覆盖多项关键能力的子系统，再对未覆盖的能力做定向搜索；不按能力表逐行机械查询。首轮至少包含一个**短的产品类别/常见项目名**方向，例如 `workout tracker`，不要只用 `GPX FIT heatmap segments` 这样的功能词交集；后者会漏掉 README 功能齐全但名称普通的整品。按需要混用：
+For each query group, know which recall gap it is meant to address; there is no need to show the user the full query log. Search first for products that cover the whole JTBD and subsystems that cover several key outcomes, then target the uncovered capabilities. Do not mechanically issue one query for every capability in a table. The first round should include at least one **short product category or common project name**, such as `workout tracker`. Do not use only a dense intersection of feature terms like `GPX FIT heatmap segments`; it can miss complete products whose README describes the features but whose name is ordinary. Mix these angles as needed:
 
-1. 工作与整品词：用户目标、成熟产品类别、相邻场景。
-2. 同义与跨领域词：不同叫法、英文术语、用户描述与开发者术语。
-3. 多能力组合词：寻找覆盖多个核心结果的产品或子系统。
-4. 缺口能力词：只对整品和组合方案仍缺失的能力查库、SDK 或实现。
-5. 替代路径词：平台特性、官方 API、托管服务、较简单的工作流。
-6. 种子扩展：从有希望仓库的主题、README 用词、依赖和提及的替代项目找新线索。
+1. Job and whole-product terms: the user's goal, common product categories, and adjacent situations.
+2. Synonyms and adjacent domains: different names, English terminology, user phrasing, and developer terminology.
+3. Multi-capability combinations: products or subsystems that cover several core outcomes.
+4. Gap capabilities: repositories, SDKs, or implementations only for needs still missing from whole-product and combined routes.
+5. Alternative routes: platform features, official APIs, hosted services, and simpler workflows.
+6. Seed expansion: topics, README terminology, dependencies, and alternative projects mentioned by promising repositories.
 
-对有平台专属输入的 Idea，再查一条**来源自带能力**路径，如 GitHub Releases、RSS、系统照片库或浏览器剪藏；若它比通用工具更直接，应进入路线比较。它可以是官方 API 或功能，而非必须是仓库。
+For an idea with platform-specific inputs, also search a **source-native capability** route, such as GitHub Releases, RSS, the system photo library, or browser clipping. If this is more direct than a general-purpose tool, include it in the route comparison. It may be an official API or built-in feature rather than a repository.
 
-整品初筛后，选出**最能决定产品成败的一项结果**（例如“Obsidian 内问答点回 PDF 页码”，而非笼统的“PDF 管理”）。如果首选整品没有该结果的直接证据，用用户现有工作流/平台名加该结果做短查询，寻找专用应用或插件；验证其实际适用范围和成熟度。若仓库搜索仍只返回通用项目或没有直接证据，再用**不同检索入口与结果词**交叉查一次，例如网页搜索 `site:github.com Obsidian PDF exact page citations local plugin`，或平台官方插件目录中的“PDF page / cited answers”。查看直接契合的窄项目，即使 Stars 较少也先进入证据筛选；不能因为它没有排在通用仓库搜索的前列就认定不存在。交叉查询若仍无可信候选，停下并写明搜索边界，不逐能力全面扫库。
+After screening whole products, select the **single outcome most likely to determine the product's success**, such as “ask questions inside Obsidian and jump to the cited PDF page,” rather than the broad “PDF management.” If the leading whole product has no direct evidence for that outcome, combine the user's current workflow or platform name with the outcome in a short query for a specialized app or plugin. Verify its actual scope and maturity. If repository search still returns only general projects or no direct evidence, cross-check once through a **different search entry point and result terms**, such as web search for `site:github.com Obsidian PDF exact page citations local plugin` or the platform's official plugin catalog for “PDF page / cited answers.” Send a directly matching niche project to evidence review even if it has few Stars; its absence from the top results of a general repository query does not prove it does not exist. If the cross-check finds no credible candidate, stop and report the search boundary instead of scanning every capability.
 
-GitHub 仓库搜索用来发现候选；代码搜索更适合验证具体接口或定位实现，不应仅凭代码片段认定项目适合。网页搜索用来补术语、平台限制及非 GitHub 路线。当前工具若把多词查询当作过严的交集、返回少量弱候选或空结果，立刻改成简短类别词/单一概念，并用网页搜索或候选 README 交叉检索；不要重复叠加限制词。GitHub 搜索语法和连接器参数因工具而异，先看当前工具说明；不要把某工具的限定符直接套到另一个工具。
+Use GitHub repository search to discover candidates. Code search is better for checking a specific interface or finding an implementation; a code snippet alone does not prove that a project is suitable. Use web search for terminology, platform constraints, and non-GitHub routes. If the current tool treats multiword queries as an overly strict intersection, returns only a few weak candidates, or returns nothing, immediately try short category terms or one concept and cross-check with web search or candidate READMEs. Do not keep adding restrictive terms. GitHub search syntax and connector parameters differ by tool; inspect the current tool's documentation and do not transfer one tool's qualifiers to another.
 
-## 迭代规则
+## Iteration Rules
 
-- 首轮优先全方案和相邻产品。若用户只问一个聚焦能力，可从该能力开始。
-- 结果太泛：加入使用场景、目标平台、输入/输出或技术形态；在评估阶段剔除偶然命中。
-- 结果太窄：去掉过早的语言、Stars、更新时间限制，换同义词或上升到工作层级。
-- 结果同质：主动寻找不同解决路线，而非再收集类似仓库。
-- 发现强种子：检查它覆盖了哪些能力，再决定是否搜索缺口。
-- 找到多个整品或多能力项目：先比较核心覆盖和复用阻力，再决定哪些缺口值得下钻；不要把它们拆散成同质的组件列表。
-- 准备把某能力判为“需自行开发”或把某整品排首位：先想清楚哪一类更完整或更简单的项目会推翻判断，并用一个不同的短类别词或来源自带路径复核；已有充分证据时不为形式增加查询。
-- 核心格只被间接覆盖：再做一次针对目标产物的专门搜索，例如“字幕/官方文字稿”与“媒体下载”分别查；比较专用组件和综合项目的维护、许可与集成成本。
-- 看似可直接采用：读近期 README、发布或关键 Issue 中的停维护、上游接口失效、登录要求等反证；这些信息可直接改变推荐级别。
+- Start with whole-solution and adjacent-product searches. If the user asks about one focused capability, start there.
+- Results are too broad: add a situation, target platform, input/output, or technical form, then exclude accidental matches during evaluation.
+- Results are too narrow: remove premature language, Stars, or update-date filters; try synonyms or move up to the user-job level.
+- Results are repetitive: look for different solution routes instead of collecting more similar repositories.
+- A promising seed appears: check what it covers before searching for gaps.
+- Several whole products or multi-capability projects appear: compare core coverage and reuse friction first, then decide which gaps warrant deeper searches. Do not break them into a homogeneous list of components.
+- Before concluding that a capability needs custom development or ranking a whole product first, identify the kind of more complete or simpler project that could overturn the conclusion. Check one different short category term or source-native route; skip this check when evidence is already sufficient.
+- A core outcome is only indirectly covered: run one focused search for the desired output, such as checking subtitles or official transcripts separately from media downloads. Compare specialist components with integrated projects on maintenance, license, and integration costs.
+- A candidate seems ready to adopt: review recent README changes, releases, or key issues for counterevidence such as abandonment, broken upstream interfaces, or sign-in requirements. This evidence can change its recommendation level.
 
-不要设置默认 `stars >= 100`、固定 5–10 组查询或固定 Top N。Stars、最近提交、是否归档只作为与场景相关的信号；小众但精确的仓库可能更有用。停止前逐项查看核心覆盖格：已有可信方案、明确需要验证的候选，或说明本轮搜索范围内的缺口；不能因为发现一个横跨多平台的下载器就跳过各平台文字稿、文章和归档路径。停止前也检查：是否搜过简短整品类别、是否看过来源自带能力、关键结果是否有直接证据或专用候选、是否有足以推翻首选的近邻项目未查。若连续查询只带来重复候选或弱相关结果，就停止扩大搜索并说明覆盖边界。
+Do not set a default `stars >= 100`, a fixed five-to-ten query groups, or a fixed Top N. Stars, recent commits, and archived status are contextual signals; a small, precise repository may be more useful. Before stopping, review every core cell: a credible solution, a candidate that clearly needs validation, or a gap within the stated search scope. Do not let discovery of one cross-platform downloader skip transcript, article, and archiving routes for each source. Also check whether you searched a short whole-product category, considered source-native features, found direct evidence or a specialist candidate for the key outcome, and ruled out nearby alternatives that could overturn the preferred route. If successive queries only repeat candidates or produce weak matches, stop expanding and explain the coverage boundary.

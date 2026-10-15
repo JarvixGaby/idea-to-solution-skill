@@ -1,18 +1,18 @@
-# 方案综合
+# Solution Synthesis
 
-先把完整产品和多能力候选的覆盖情况并列比较，再按能力清单回填资源与缺口；由此组合成能完成工作的路线，而非单纯排名：
+Compare coverage from complete products and multi-capability candidates first, then map resources and gaps against the capability list. Combine them into routes that accomplish the user's job rather than producing a simple ranking:
 
-- 采用或改造一个覆盖大部分目标的完整产品；
-- 整合一个多能力项目与少量补充组件；
-- 采用较小的库、官方 API、平台能力或服务；
-- 调整工作流，用更简单的方法完成 JTBD。
+- Adopt or adapt a complete product that covers most of the goal.
+- Combine one multi-capability project with a small number of supplementary components.
+- Use a smaller library, official API, platform feature, or service.
+- Change the workflow and accomplish the JTBD in a simpler way.
 
-能力回填应让用户一眼看到：哪部分已有成熟 GitHub 仓库，哪部分只找到需要集成/改造的组件，哪部分暂需开发或继续调查。每一项都注明具体资源及证据，跨能力仓库可重复引用或用覆盖标记。不要为了得到“全覆盖”给每项硬配仓库。
+Make the capability map easy to scan: show which parts have mature GitHub repositories that can be adopted directly, which have only components that need integration or adaptation, and which may need development or further research. Cite a specific resource and evidence for each item. A multi-capability repository may appear on several rows or use a coverage marker. Do not force a repository into every row to claim full coverage.
 
-随后只展示实际有证据、且取舍不同的整体路线。每条路线说明核心覆盖、需要补的部分、复用方式、主要依赖、许可与集成风险、目前尚未核查的假设。一个仓库覆盖多项能力是优点，但也要看到改造成本。多个仓库看起来覆盖全部能力，也不能据此声称组合已可运行。
+Show only complete routes with real evidence and meaningful trade-offs. For each route, describe core coverage, remaining work, reuse approach, main dependencies, license and integration risks, and assumptions not yet verified. A repository covering several capabilities is valuable, but account for the cost of adapting it. Several repositories that appear to cover everything do not prove that the combination works.
 
-把产品结论说清楚：若现成整品能完成用户可接受版本，优先建议试用/适配；若只缺一块，说明最小补充；若必须组合多项目，说明连接点和长期维护面；若用户用了含糊词，分别给出宽松与严格解释下的不同结论。不要把自行开发写成默认目标。对没有证据支持的“全自动”“完全离线”“生产可用”保留验证状态。
+State the product implication clearly. If an existing complete product can meet an acceptable first version, suggest trying or adapting it first. If one part is missing, identify the smallest supplement. If several projects must be combined, describe the integration points and ongoing maintenance. If an ambiguous term changes the result, give separate conclusions for reasonable and strict interpretations. Do not treat custom development as the default. Keep claims such as “fully automatic,” “fully offline,” or “production ready” unverified unless evidence supports them.
 
-用户只想收集选项时，不强推最终选择。有充分证据且用户需要判断时，给出优先调查路线及原因；多个候选可排序，但说明排序依据和适用条件。推荐“先验证什么”应尽量小而具体，例如检查某接口是否满足目标输入/输出；这是给下一开发流程的建议，不由本 Skill 执行。
+Do not force a final choice when the user only wants options. When evidence supports a recommendation and the user needs one, name the route worth investigating first and explain why. Candidates can be ranked if the criteria and conditions are clear. Make “what to validate next” as small and concrete as possible, such as checking whether an interface accepts the required input and returns the needed output. This is a recommendation for a later development workflow; the Skill does not perform it.
 
-当没有可靠候选时，明确报告搜索范围、近似资源与未知；建议调整术语、使用非仓库方案或在后续开发流程自行实现某个缺口。只有完成了足以支持当前判断的检索，才写“本轮暂无可直接复用资源，暂按自行开发估算”；访问失败或未搜索时写“未知”。不要为了填表虚构项目。
+When no reliable candidate is found, report the search scope, near matches, and unknowns. Suggest changing terminology, using a non-repository approach, or estimating development of a specific gap in a later workflow. Say “no directly reusable resource found in this search; estimate custom development for now” only after enough research to support it. If access failed or no search was done, say “unknown.” Never fabricate projects to fill a table.

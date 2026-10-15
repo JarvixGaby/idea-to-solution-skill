@@ -1,26 +1,26 @@
-# 好产品原则：现成产品拆解与反向判断 Idea
+# Product Principles: Teardown and Reverse-Testing an Idea
 
-用现成产品的用户工作、核心循环、体验取舍与风险检验粗 Idea，或单独解释一个产品为什么有效。个人项目不默认套用商业模式、增长、护城河或固定章节报告。
+Use the user job, core loop, experience trade-offs, and risks of existing products to test a rough idea, or explain on its own why a product works. Do not default to business model, growth, defensibility, or a fixed chapter-by-chapter report for personal projects.
 
-## 分析一个现成产品为什么好
+## Analyze Why an Existing Product Is Good
 
-按用户实际问题裁剪，优先回答以下内容，而非照着功能表复述：
+Tailor the analysis to the user's question. Prefer the following over repeating a feature list:
 
-1. **谁、何时、为了什么用。** 写清触发情境、此前替代做法、功能性与情感性工作、使用频率。一次性任务也可很好；不强求每天回来。
-2. **第一次价值怎样到达。** 用户要交出什么数据、做几步、多久得到可见结果；识别最关键的“原来如此”时刻，以及节省时间、降低不确定性或留下有价值成果的证据。
-3. **核心循环与完成路径。** 用“触发 → 行动 → 可见结果 → 再用/完成”描述。对一次性工具，改看任务完成、导出保存与以后找回；不要硬造留存循环。
-4. **具体体验取舍。** 找实际可观察的交互、信息结构、默认设置、权限边界、人工确认、证据链接、导出和失败提示；说明它怎样减少摩擦或建立信任。避免只说“设计简洁”“体验优秀”。
-5. **成功与弱点。** 分开产品能力、厂商自报规模、独立采用信号和真实用户效果。记录现成替代、依赖的数据/渠道/社区、维护和隐私风险，以及目前看不到的内部指标。没有证据时写未知。
-6. **可借鉴与不可照搬。** 抽象出对目标用户工作有帮助的机制；标记品牌、分发、规模、专有数据、团队和时机等无法直接复制的条件。若用户要分析一个具体产品，到此给有出处的结论与最值得借鉴的设计原则。
+1. **Who uses it, when, and for what?** Describe the trigger, prior alternatives, functional and emotional jobs, and frequency. A one-time task can be valuable; do not require daily return visits.
+2. **How does the user reach first value?** Identify what data the user provides, how many steps it takes, and how long it takes to see a result. Look for the key “aha” moment and evidence that the product saves time, reduces uncertainty, or leaves the user with a valuable outcome.
+3. **What is the core loop and completion path?** Describe “trigger → action → visible result → reuse or completion.” For a one-time tool, focus on task completion, export or saving, and later retrieval; do not invent a retention loop.
+4. **What are the concrete experience trade-offs?** Find observable interactions, information structure, defaults, permission boundaries, human review, evidence links, export behavior, and failure messages. Explain how they reduce friction or build trust. Avoid vague claims such as “simple design” or “great experience.”
+5. **What are its strengths and weaknesses?** Distinguish product capabilities, vendor-reported scale, independent adoption signals, and real user outcomes. Record existing alternatives, dependencies on data, distribution, or community, maintenance and privacy risks, and internal metrics that are not available. Mark unsupported conclusions as unknown.
+6. **What can transfer, and what cannot?** Extract mechanisms that may help the target user's job. Identify conditions that cannot be copied directly, such as brand, distribution, scale, proprietary data, team, and timing. For a focused teardown, provide sourced conclusions and the most useful design principles here.
 
-只有用户明确要求完整产品深拆时才进一步分析架构与导航、商业模式、竞争、增长或 AI 分工；这些维度需有资料支持，推断要标明。不强制 15 节、固定竞争矩阵或自动生成 HTML。
+Explore architecture and navigation, business model, competition, growth, or AI roles only when the user explicitly asks for a full product teardown. These dimensions need supporting evidence, and inferences must be labeled. Do not require a 15-section report, a fixed competitive matrix, or automatic HTML output.
 
-## 用好产品反向判断一个粗 Idea
+## Use Successful Products to Test a Rough Idea
 
-- 选真正可比的产品：优先相同 JTBD，再看相邻价值机制或重要反例；不要只因界面或 AI 功能相似就类比。用户指定案例先核查。
-- 对每个案例给可打开的原始来源和日期。官方文档能证明产品声明的能力；使用、付费、留存、持续运营等是不同成功信号。下载、评价、融资或 GitHub Stars 不能单独证明当前 Idea 有需求，也不能把产品整体增长归因于一个功能。
-- 从案例归纳与当前 Idea 有关的少量标准，逐项看“已支持／有迹象／未知／有反证”；与用户现有做法或现成产品比较。结论必须由机制和用户情境共同支撑，不能写成“成功产品也有这个功能，所以值得做”。
-- 输出“值得继续展开／值得但换切口／证据不足／当前形态不值得继续”之一，说明理由、信心和能改变结论的事实。它回答是否值得**下一轮探索**，不等于批准开发。
-- 只有正向判断形成了明确软件目标，才进入方案脑暴与 GitHub 搜索。若缺少目标用户、触发情境或首次价值的证据，先做访谈/人工试验；不为凑完整流程搜索仓库。
+- Choose genuinely comparable products: prioritize the same JTBD, then adjacent value mechanisms or important counterexamples. Do not compare products only because their interfaces or AI features look similar. Verify any case the user names.
+- Provide a direct, accessible source and date for each case. Official documentation can support a product capability claim; usage, payment, retention, and continued operation are different signals of success. Downloads, reviews, funding, or GitHub Stars alone do not prove demand for the current idea. Do not attribute a product's overall growth to one feature.
+- Derive a small set of criteria relevant to the current idea. For each, mark “supported,” “some evidence,” “unknown,” or “counterevidence,” and compare with the user's current approach or existing products. The conclusion must be supported by both the mechanism and user context; do not reason that an idea is worth doing merely because a successful product has the same feature.
+- Give one conclusion: “worth exploring further,” “worth exploring with a different angle,” “insufficient evidence,” or “not worth pursuing in its current form.” Explain why, your confidence, and what facts could change the conclusion. This answers whether the idea merits **another round of exploration**; it is not approval to build.
+- Continue into solution brainstorming and GitHub search only when a positive judgment produces a clear software goal. If evidence is missing about the target user, trigger, or time to first value, recommend an interview or manual experiment first; do not search repositories just to complete a workflow.
 
-所有分析把事实、仓库或产品自述、推断及未知分开。缺乏可信成功案例时直说；可以借鉴设计机制，但不可编造成功指标。
+Keep facts, product or repository claims, inferences, and unknowns distinct throughout. Say so when there is no credible success case. Design mechanisms may still be useful, but do not invent success metrics.

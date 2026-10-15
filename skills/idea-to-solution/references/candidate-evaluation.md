@@ -1,28 +1,28 @@
-# 候选筛选与证据
+# Candidate Evaluation and Evidence
 
-## 归一化与分类
+## Normalize and Classify
 
-GitHub 仓库按规范化 `owner/repo` 去重，统一仓库网页链接；识别 fork、迁移或镜像，避免把同一项目算成多个独立方案。非仓库资源按官方产品/API 页面归并。候选类型至少区分：完整应用、覆盖多能力的子系统、库/SDK、平台 API、托管服务、目录/研究资料、替代流程。目录和论文可提供线索，但不能冒充可直接集成的实现。
+Deduplicate GitHub repositories by normalized `owner/repo` and use canonical repository links. Identify forks, migrations, and mirrors so one project is not counted as several independent options. Group non-repository resources under official product or API pages. Distinguish at least these candidate types: complete application, multi-capability subsystem, library/SDK, platform API, hosted service, directory/research material, or alternative workflow. A directory or paper can provide a lead, but must not be presented as an implementation ready to integrate.
 
-为短名单记录：资源链接与类型、为什么符合当前 JTBD、覆盖与未覆盖的能力、可复用方式（直接用/改造/集成/参考/购买）、关键证据链接、许可、维护信号、运行和依赖约束、集成摩擦、未知项。按需要写成临时分析，不要求生成数据库或固定表格。
+For a shortlist, record the resource link and type, why it fits the current JTBD, covered and uncovered capabilities, reuse approach (adopt, adapt, integrate, reference, or purchase), key evidence links, license, maintenance signals, runtime and dependency constraints, integration friction, and unknowns. These notes can remain part of the analysis; do not create a database or fixed table unless useful.
 
-“成熟仓库可直接采用”需要综合证据：相关能力有具体文档或实现证据，接口/成品可获得，许可适合预期复用，依赖与目标环境相容，并有维护、发布、测试或真实使用迹象。不能只凭星标、最近提交或 README 自称成熟。证据不足时标“需验证”；概念验证或高度定制的项目标“参考/改造”，避免把找到仓库等同于节省了开发工作。
+Calling a repository “mature and ready to adopt” requires multiple pieces of evidence: concrete documentation or implementation evidence for relevant capabilities, an accessible interface or product, a license suitable for the intended reuse, dependencies compatible with the target environment, and signs of maintenance, releases, tests, or real usage. Stars, recent commits, or a README claim alone are not enough. Label weak evidence “needs verification.” Label prototypes or highly customized projects “reference/adapt” so finding a repository is not mistaken for saving development work.
 
-## 分层核查
+## Verify in Layers
 
-1. **发现层**：搜索摘要、描述、主题。只能写“可能相关”。
-2. **文档层**：README、功能说明、用法、许可和相关官方文档。可以写“文档称支持”，说明适用范围。
-3. **代码层**：仅在深度或关键不确定性需要时，定位接口、实现文件、测试或示例。代码存在不等于目标环境可运行。
-4. **运行层**：本 Skill 不执行候选代码，因此不能自称已经验证运行。若用户带来独立运行记录，应明确其来源与条件。
+1. **Discovery layer:** search snippets, descriptions, and topics. At this stage, say only “possibly relevant.”
+2. **Documentation layer:** README, feature descriptions, usage instructions, license, and relevant official docs. You may say “the documentation claims support,” with its stated scope.
+3. **Code layer:** when the requested depth or a key uncertainty warrants it, locate interfaces, implementation files, tests, or examples. Code existing does not prove it runs in the target environment.
+4. **Runtime layer:** this Skill does not execute candidate code, so it must not claim to have verified runtime behavior. If the user provides independent runtime results, state their source and conditions.
 
-`quick` 通常停在元数据和关键 README；`standard` 查看短名单文档、许可和维护迹象；`deep` 对少数关键候选追到相关代码、示例或测试，仍保持只读。不要深读全部搜索结果。
+`quick` usually stops at metadata and the key README; `standard` checks shortlist documentation, licenses, and maintenance signals; `deep` inspects relevant code, examples, or tests for a few important candidates while remaining read-only. Do not deeply inspect every search result.
 
-排序先看目标契合、实际覆盖、证据可信度、许可和集成成本，再看维护与采用信号。**先逐项核查用户的硬条件，再比较功能覆盖数量。** 例如用户要求回答可点回 PDF 的具体页或段时，普通“附论文引文”不能算已满足；用户要求家庭长期保存时，缺少导出与备份路径的候选不能因为录音功能丰富就排首位。若 README 没有直接证据，标“未证实”并降低推荐确定性。不要使用固定分数或星标权重制造精确感。未找到 LICENSE 时写“许可未核实”，不能将公开可见等同于可自由复用；许可适用性有疑问时提出核查项，不给法律保证。若某关键限制已明确排斥候选，解释原因并将其降级。
+Rank by fit to the goal, actual coverage, evidence quality, license, and integration cost, followed by maintenance and adoption signals. **Check every user hard constraint before comparing capability counts.** For example, if the user needs answers linked to an exact PDF page or section, general paper citations do not satisfy the requirement. If the user needs long-term household preservation, a candidate without export and backup paths should not rank first just because it has rich recording features. When a README lacks direct evidence, mark the capability “unverified” and lower confidence. Do not create false precision with fixed scores or Star weights. If no LICENSE is available, say “license not verified”; public visibility does not mean unrestricted reuse. For license questions, list what needs review without giving legal assurance. If a confirmed constraint disqualifies a candidate, explain why and lower its rank.
 
-推荐前实时打开规范仓库链接。若仓库页与 API 当前均不可访问，而搜索索引还留着旧页面，标“当前不可核验”；不要把索引缓存当成实时仓库核查，也不要直接认定仓库虚构。核查项目依赖时，区分默认必需、可选功能依赖和特定部署方式依赖，不能把可选 Redis、模型 API 等写成所有用户必须安装。
+Before recommending, open the current canonical repository page. If both the repository and API are unavailable but an old search index remains, label the project “not currently verifiable.” Do not treat cached indexing as a live check or conclude that the repository is fictitious. When reviewing dependencies, distinguish required dependencies from optional features and deployment-specific requirements; do not imply that optional Redis or model API access is required for every user.
 
-有多个候选时按**当前用户目标**做相对排序：先比较完整产品或多能力项目能否直接完成工作，再比较组件组合路线；每个候选写清关键优势、缺口、复用方式和一个足以改变顺序的风险。排序是条件性的，例如“若必须完全离线，A 优先；若优先少维护，B 优先”，不能用通用 Star 排名代替。若证据不足以排序，列出并列候选和所需验证；只有一个可信候选时写明“本轮仅一个”，不补造竞争者。
+When there are multiple candidates, rank them **for the current user's goal**. Compare complete products or multi-capability projects first, then combinations of components. For each candidate, state its key advantage, gaps, reuse approach, and a risk that could change its position. Rankings are conditional: for example, “A first if fully offline is required; B first if low maintenance matters most.” If evidence is insufficient to rank, show tied candidates and the validation needed. If only one credible candidate exists, say “only one found in this search”; do not invent a competitor.
 
-比较个人项目时，明确估算**剩余工作面**：采用后还要维护哪些平台适配、模型、数据库、服务、手工审阅和升级；不要只比较功能数量。若项目只支持较弱解释（如匹配已定义路段），应写“满足解释 A，解释 B 待开发/验证”，而不是整体排除或整体认定已解决。排序前回看一个更完整的近邻整品或更简单的来源原生路径；若有明显反证，调整首选。
+For a personal project, estimate the **remaining work surface**: platform adapters, models, databases, services, manual review, and upgrades that would still need maintenance after adoption. Do not compare feature counts alone. If a project supports only a weaker interpretation, such as matching routes the user has already defined, say “meets interpretation A; interpretation B needs development or validation” rather than excluding it entirely or claiming the whole need is solved. Before ranking, check for a more complete adjacent product or a simpler source-native route; revise the first choice when there is strong counterevidence.
 
-若一个通用大项目覆盖很多普通能力、一个较小的专用应用直接覆盖最关键结果，比较两者的证据与剩余工作面，再排序。不要仅凭仓库规模、功能总数或“成熟平台”名气压过直接契合的候选；也不要因专用项目刚起步就省略维护与运行验证。
+If a large general-purpose project covers many common capabilities while a smaller specialist directly covers the key outcome, compare their evidence and remaining work before ranking them. Do not let repository size, feature count, or platform reputation outweigh direct fit. Also do not ignore maintenance and runtime validation merely because a specialist is new.

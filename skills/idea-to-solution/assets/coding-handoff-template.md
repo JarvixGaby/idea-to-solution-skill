@@ -1,35 +1,35 @@
-# Coding Handoff： [项目/目标]
+# Coding Handoff: [Project / Goal]
 
-> 本文是研究交接，不授权自动实施或运行候选代码。
+> This document hands off research findings. It does not authorize automatic implementation or running candidate code.
 
-## JTBD 与范围
+## JTBD and Scope
 
-- 目标结果：
-- 已确认约束：
-- 暂用假设：
-- 不在本次范围：
+- Desired outcome:
+- Confirmed constraints:
+- Working assumptions:
+- Out of scope:
 
-## 产品拆解与已收敛思路
+## Product Breakdown and Current Direction
 
-- 核心流程与能力：
-- 考虑过的替代路径及取舍：
-- 需要产品决策的问题：
+- Core workflow and capabilities:
+- Alternative routes considered and trade-offs:
+- Product decisions still needed:
 
-## 能力、仓库与开发缺口
+## Capabilities, Repositories, and Development Gaps
 
-| 能力 | 成熟可直接采用 | 可集成或改造 | 暂需开发/调查 | 直接证据与限制 |
+| Capability | Mature and ready to adopt | Can integrate or adapt | May need development / investigation | Direct evidence and limits |
 |---|---|---|---|---|
 
-## 候选整体路线
+## Candidate End-to-End Routes
 
-[说明跨能力仓库的覆盖、组合接口及主要取舍。]
+[Describe coverage across capabilities, integration points between projects, and the main trade-offs.]
 
-## 当前判断
+## Current Assessment
 
-- 有证据支持的结论：
-- 仍有分歧或替代选项：
-- 不应直接视为已验证的主张：
+- Conclusions supported by evidence:
+- Remaining disagreements or alternatives:
+- Claims that should not be treated as verified:
 
-## 给后续开发会话的最小验证建议
+## Minimal Validation for a Later Development Session
 
-[需要核实的接口、输入输出、平台兼容、许可或运行条件；不包含“已经执行”的暗示。]
+[Interfaces, inputs and outputs, platform compatibility, licenses, or runtime conditions to verify. Do not imply that any check has already been performed.]

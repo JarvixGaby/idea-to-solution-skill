@@ -2,7 +2,7 @@
 
 **Idea to Solution is a portable Agent Skill that applies Product Manager thinking to software idea validation, JTBD analysis, product teardown, solution brainstorming, and GitHub open-source discovery.**
 
-[简体中文](README.zh-CN.md)
+[Chinese (Simplified)](README.zh-CN.md)
 
 It turns a rough software idea into a clearer product direction and reuse plan. The skill applies a **Product Manager’s perspective** to early product thinking: understand the job behind an idea, learn from products that already serve similar needs, decide whether the idea deserves further exploration, and find software that can be reused before implementation.
 

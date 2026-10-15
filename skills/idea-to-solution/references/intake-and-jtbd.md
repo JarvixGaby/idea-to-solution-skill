@@ -1,22 +1,22 @@
-# 入口判断与 JTBD
+# Intake and JTBD
 
-## 识别用户当前要作的决定
+## Identify the Decision the User Wants to Make
 
-| 输入 | 首个动作 | 可跳过的内容 |
+| Input | First action | What can be skipped |
 |---|---|---|
-| 模糊想法 | 用“谁在什么场景要得到什么结果”写工作假设，识别限制性预设 | 暂不锁定技术栈 |
-| 明确需求 | 提取成功条件、硬约束与优先级 | 重复的创意发散 |
-| 已知仓库 | 读取其定位、主要功能、许可与适用边界，再比较替代或互补 | 无关的全行业盘点 |
-| 聚焦问题 | 定义目标能力及必要接口/环境 | 完整产品规划 |
+| Rough idea | Draft a job hypothesis as “who wants what outcome in which situation,” and identify assumptions that may constrain the idea | Do not lock in a technology stack yet |
+| Clear requirements | Extract success conditions, hard constraints, and priorities | Repeating open-ended brainstorming |
+| Known repository | Review its purpose, main capabilities, license, and limits; then compare alternatives or complements | An unrelated industry survey |
+| Focused question | Define the target capability and necessary interfaces or environment | Full product planning |
 
-先分清：用户直接确认的事实、可安全暂用的假设、需要检验的假设。先给出可讨论的产品拆解草案，而不是要求用户从零填表。若平台、离线/隐私要求、知识库存储方式、许可用途或目标用户等缺失信息会改变能力划分和候选集合，指出哪项决定依赖答案，只问一两个关键问题；等待回答后再做依赖该答案的搜索。其余范围可以继续独立研究。若只是优化候选排序，带着公开假设继续。
+Separate facts the user has confirmed, assumptions that are safe to use temporarily, and assumptions that need testing. Offer a draft product breakdown for discussion instead of asking the user to fill out a form from scratch. If missing information about the platform, offline or privacy needs, knowledge-base storage, license usage, or target users would change the capability breakdown and candidate set, explain which decision depends on the answer and ask one or two critical questions. Wait for the answer before doing search that depends on it; continue any independent research. If the information would only change candidate ranking, state an assumption and proceed.
 
-用一个简短的**结果约定**帮助拆解：用户交给工具什么、在何时/多频繁使用、最后要得到什么、怎样判断有用、哪些操作必须由人确认。它比技术模块清单更能区分“直接用现成应用”和“必须开发新能力”。个人工具还要问是否愿意维护服务器、模型和平台适配；没有证据时作为条件，不替用户默认接受。
+Use a short **outcome contract** to guide the breakdown: What does the user give the tool? When and how often do they use it? What should they get back? How will they tell whether it helped? Which actions require human confirmation? This distinguishes “use an existing application” from “build a new capability” better than a technical module list. For personal tools, also ask whether the user is willing to maintain servers, models, and platform adapters. If unknown, treat this as a condition rather than assuming the user accepts the burden.
 
-对会改变搜索的模糊词保留两种合理解释，例如“发现重复路段”可能是匹配用户已定义的路段，也可能是自动挖掘从未定义的共同路段；“本地”可能是数据留在自己的设备，也可能要求完全断网。若用户未答，搜索先覆盖两种解释，并在报告中分别标注现成能力与新增开发量。不要因采用较严格解释就遗漏能完成较常见工作流的整品。
+Keep multiple reasonable interpretations of ambiguous terms when they would change search. For example, “find duplicate routes” could mean match routes the user has already defined or discover shared routes that have never been defined; “local” could mean data stays on the user's device or that the software works entirely offline. If the user has not answered, search both interpretations and label the existing capabilities and additional work for each. Do not let a stricter interpretation hide a complete product that supports the more common workflow.
 
-JTBD 不等于用户最早说出的功能清单。可以考虑“现成产品稍作适配”“平台自带能力”“简化交互”是否更快完成工作。只有差异会改变搜索路径时，才列出 1–3 条路径；不要为了数量制造分支。
+A JTBD is not the feature list the user first proposed. Consider whether an existing product with minor adaptation, a built-in platform feature, or a simpler interaction can get the job done sooner. List one to three routes only when the differences change the search direction; do not invent branches to meet a quota.
 
-搜索前做一次收敛检查：目标结果是否明确、核心能力与可选能力是否已分开、现成整品或来源自带功能是否可能缩短路径、还缺的答案是否会改变搜索。如果均足够明确，自行形成简短的搜索简报并继续；无需为了形式要求用户确认。若用户希望先讨论产品或明确要求暂不搜索，就停在此阶段。
+Before searching, check that the desired outcome is clear, core and optional capabilities are separated, an existing product or source-native feature could shorten the route, and no unresolved answer would change the search. If these are clear enough, write a short search brief and continue without asking the user to approve the formality. Stop at this stage if the user wants to discuss the product first or explicitly defers search.
 
-示例：用户想做数字名片时，先问清实际要完成的是展示身份、交换联系信息还是管理后续关系。QR、NFC、vCard 是可能路径，不是预先确定的模块。
+Example: If the user wants to build a digital business card, first clarify whether the job is to present identity, exchange contact information, or manage follow-up relationships. QR codes, NFC, and vCards are possible approaches, not predetermined modules.

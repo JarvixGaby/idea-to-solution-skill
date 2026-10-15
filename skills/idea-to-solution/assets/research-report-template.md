@@ -1,39 +1,39 @@
-# Idea to Solution 研究报告（按需裁剪）
+# Idea to Solution Research Report (Trim to Fit)
 
-**研究日期与范围：** [日期；Stars 是否可访问/是否检索、公开 GitHub/网页来源及限制]
+**Research date and scope:** [Date; whether Stars were accessible/searched; public GitHub/web sources and limits]
 
-**按请求选用部分：** 粗 Idea 使用下列完整顺序；只分析现成产品时，用“用户工作 → 首次价值 → 核心循环或完成路径 → 具体体验取舍 → 成功证据与弱点 → 可借鉴及不可照搬原则”交付，并省略第 3–7 节的方案搜索内容；搜索专用任务从第 3 节开始。只有实际做了 GitHub 搜索，才填写 Stars 状态。
+**Sections to use for this request:** For a rough idea, use the full order below. For a standalone product teardown, deliver “user job → time to first value → core loop or completion path → concrete experience trade-offs → evidence of success and weaknesses → principles that may or may not transfer,” and omit the solution-search sections 3–7. A search-only task starts at section 3. Fill in Stars status only if GitHub search was actually performed.
 
-## 1. Idea 与要完成的工作
+## 1. Idea and Job to Be Done
 
-[原始想法、JTBD、输入与期望输出、成功判断、用户已确认的约束与暂用假设。]
+[Original idea, JTBD, inputs and desired outputs, definition of success, user-confirmed constraints, and working assumptions.]
 
-## 2. 粗 Idea 的案例判断（仅在需要判断潜力时）
+## 2. Product Cases for Assessing the Rough Idea (Only When Potential Is in Scope)
 
-[可比的真实产品、可核查成功信号、可迁移机制和不可照搬条件；从案例得出的本 Idea 判断标准。明确“值得继续展开／值得但换切口／证据不足／当前形态不值得继续”、理由与会改变结论的事实。若用户只要 GitHub 选型，省略本节。]
+[Comparable real products, verifiable success signals, transferable mechanisms, and conditions that do not transfer; criteria derived from the cases for judging this idea. State one of “worth exploring further,” “worth exploring with a different angle,” “insufficient evidence,” or “not worth pursuing in its current form,” with reasons and facts that could change the conclusion. Omit this section if the user only asked for GitHub selection.]
 
-## 3. 产品拆解与搜索前收敛
+## 3. Product Breakdown and Search Convergence
 
-[用户从输入到结果的最短流程；核心和可选能力；“自动/本地/发现”等可能改变选型的不同解释；现成整品、来源自带能力与轻量组合等路径；为什么本轮按此范围搜索。若关键答案未定，列出具体问题并暂停依赖它的检索，或在用户要求继续时并行保留不同解释。]
+[The shortest path from user input to outcome; core and optional capabilities; alternative interpretations of terms such as “automatic,” “local,” or “discovery” that could change selection; routes through complete products, source-native features, or lightweight combinations; and why this search scope was chosen. If a key answer is unknown, list the specific question and pause dependent searches, or preserve multiple interpretations in parallel when the user asks you to continue.]
 
-## 4. 候选方案与排序（正向分支或用户明确要求搜索时）
+## 4. Candidate Routes and Ranking (For Positive Judgments or Explicit Search Requests)
 
-| 相对顺序 | 完整产品/多能力组合/来源原生或组件路线 | 覆盖的核心结果 | 为什么排在这里 | 采用后仍需做和维护的事 | 证据与风险 |
+| Relative rank | Complete product / multi-capability combination / source-native or component route | Core outcomes covered | Why it ranks here | Remaining work and maintenance | Evidence and risks |
 |---|---|---|---|---|---|
 
-[只列有证据且有实质差别的候选，标明来自用户 Stars 或公开搜索。按当前 JTBD 排序，不强制多个结果；证据不足时并列并写明待验证条件。]
+[List only candidates with evidence and meaningful differences. Mark whether each came from the user's Stars or public search. Rank for the current JTBD; do not force multiple options. If evidence is insufficient to rank, show a tie and state what needs verification.]
 
-## 5. 能力与现成方案对照
+## 5. Capability and Reusable-Option Map
 
-| 能力/流程环节 | 重要性 | 成熟可直接采用的仓库 | 可集成/改造的资源 | 仍需开发或调查 | 证据与限制 |
+| Capability / workflow step | Importance | Mature repository ready to adopt | Resource to integrate / adapt | Still needs development or research | Evidence and limits |
 |---|---|---|---|---|---|
 
-[同一仓库可覆盖多行。没有验证成熟度时不要放进“成熟”列；“需开发”表示本轮未找到可直接复用方案，说明检索边界；未检索或工具失败写“未知”。按内容调整列宽或拆成简短小节。]
+[The same repository may cover several rows. Do not put a candidate in the “mature” column without maturity evidence. “Needs development” means no directly reusable option was found in this search; state the search boundary. If not searched or a tool failed, write “unknown.” Adjust columns or use short subsections as needed.]
 
-## 6. 整体实现路线
+## 6. End-to-End Solution Routes
 
-[从现成整品、组合组件、来源原生能力或简化路径中提炼实质不同的路线和取舍；明确“直接用、少量适配、必须开发”的界限，以及含糊需求在不同解释下如何改变选择。用户只收集选项时不强选。]
+[Describe meaningfully different routes using a complete product, component combination, source-native capability, or simpler workflow. Clarify what can be adopted directly, what needs minor adaptation, and what must be built. Explain how different interpretations of an ambiguous requirement would change the choice. Do not force a single choice when the user only wants options.]
 
-## 7. 优先验证
+## 7. Highest-Priority Validation
 
-[能改变开发选择的少量问题、样本或接口验证；引用直接来源。]
+[A small set of questions, examples, or interface checks that could change the development decision; cite direct sources.]
