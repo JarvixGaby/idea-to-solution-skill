@@ -1,6 +1,6 @@
-# Idea to Solution：面向 Codex 的产品发现 Skill
+# Idea to Solution：面向 AI Agent 的产品发现 Skill
 
-**Idea to Solution 是一个采用产品经理思维的 Codex Skill，用于软件 Idea 评估、JTBD 拆解、产品分析、方案脑暴与 GitHub 开源项目发现。**
+**Idea to Solution 是一个可移植的 Agent Skill，采用产品经理视角进行软件 Idea 评估、JTBD 拆解、产品分析、方案脑暴与 GitHub 开源项目发现。**
 
 [English](README.md)
 
@@ -37,9 +37,9 @@
 
 ## 仓库内容
 
-- [`SKILL.md`](SKILL.md)：Codex Skill 主入口与执行流程。
-- [`references/`](references/)：JTBD、好产品原则、搜索、候选评估和方案综合等方法。
-- [`assets/`](assets/)：可选的研究报告与 Coding Handoff 模板。
+- [`skills/idea-to-solution/SKILL.md`](skills/idea-to-solution/SKILL.md)：Skill 主入口与执行流程。
+- [`skills/idea-to-solution/references/`](skills/idea-to-solution/references/)：JTBD、好产品原则、搜索、候选评估和方案综合等方法。
+- [`skills/idea-to-solution/assets/`](skills/idea-to-solution/assets/)：可选的研究报告与 Coding Handoff 模板。
 
 ## 搜索结果如何组织
 
@@ -62,16 +62,23 @@
 
 默认在对话中结构化呈现。只有用户提出要求时，才生成 Markdown 研究报告或 Coding Handoff。
 
-## 在 Codex 中使用
+## 安装到 Agent
 
-将仓库安装为个人 Codex Skill：
+本仓库采用[开放的 Agent Skills 格式](https://agentskills.io/home)。使用 [`skills` CLI](https://www.skills.sh/docs/cli) 可将完整 Skill（包括参考资料和模板）安装到兼容的 Agent：
 
 ```bash
-mkdir -p ~/.codex/skills
-git clone https://github.com/JarvixGaby/idea-to-solution-skill.git ~/.codex/skills/idea-to-solution
+npx skills add JarvixGaby/idea-to-solution-skill --skill idea-to-solution
 ```
 
-之后可以直接描述粗略想法或提出聚焦请求，例如：
+本仓库只有一个 Skill。如果要安装到 CLI 检测到的所有兼容 Agent：
+
+```bash
+npx skills add JarvixGaby/idea-to-solution-skill --all
+```
+
+也可以手动将 `skills/idea-to-solution/` 复制到 Agent 支持的 Skill 目录。目录约定和支持情况因 Agent 而异，请查看对应 Agent 的文档。
+
+安装后，可以向 Agent 描述粗略想法或提出聚焦请求，例如：
 
 > 我在考虑做一个帮助社区运动俱乐部协调训练时间的轻量工具。值得继续探索吗？有哪些产品机制值得借鉴？现成项目能复用什么？
 
@@ -82,7 +89,7 @@ git clone https://github.com/JarvixGaby/idea-to-solution-skill.git ~/.codex/skil
 ## 使用边界
 
 - Skill 负责**研究与产品发现**，不会安装、克隆、运行候选项目，也不会修改项目代码。
-- 结论取决于当前 Codex 环境提供的搜索和阅读工具。无法实时搜索时，会把仓库现状标为未知。
+- 结论取决于当前 Agent 环境提供的搜索和阅读工具。无法实时搜索时，会把仓库现状标为未知。
 - 仓库描述和文档是待核查的证据，不代表软件已经运行成功或满足所有需求。
 - 这是辅助个人探索的工作流，不替代用户研究，也不保证 Idea 一定成功。
 
@@ -90,7 +97,11 @@ git clone https://github.com/JarvixGaby/idea-to-solution-skill.git ~/.codex/skil
 
 ### Idea to Solution 是什么？
 
-这是一个用于产品发现的 Codex Skill：从用户工作出发拆解软件 Idea，探索不同方案路线，再检查现有 GitHub 项目可以复用哪些部分。
+这是一个用于产品发现的 Agent Skill：从用户工作出发拆解软件 Idea，探索不同方案路线，再检查现有 GitHub 项目可以复用哪些部分。
+
+### 哪些 Agent 可以使用？
+
+它采用开放的 Agent Skills 格式，可安装到兼容该格式的 Agent。各 Agent 提供的工具、搜索能力和 Skill 资源支持情况可能不同。
 
 ### 它会直接开发产品吗？
 

@@ -1,6 +1,6 @@
-# Idea to Solution: Codex Skill for Product Discovery
+# Idea to Solution: Agent Skill for Product Discovery
 
-**Idea to Solution is a Codex skill that applies Product Manager thinking to software idea validation, JTBD analysis, product teardown, solution brainstorming, and GitHub open-source discovery.**
+**Idea to Solution is a portable Agent Skill that applies Product Manager thinking to software idea validation, JTBD analysis, product teardown, solution brainstorming, and GitHub open-source discovery.**
 
 [简体中文](README.zh-CN.md)
 
@@ -37,9 +37,9 @@ The workflow adapts to the request. It can stop after an idea assessment, analyz
 
 ## What is included
 
-- [`SKILL.md`](SKILL.md) — the Codex skill entry point and workflow.
-- [`references/`](references/) — focused guides for JTBD, product principles, search, candidate evaluation, and solution synthesis.
-- [`assets/`](assets/) — optional research report and coding handoff templates.
+- [`skills/idea-to-solution/SKILL.md`](skills/idea-to-solution/SKILL.md) — the skill entry point and workflow.
+- [`skills/idea-to-solution/references/`](skills/idea-to-solution/references/) — focused guides for JTBD, product principles, search, candidate evaluation, and solution synthesis.
+- [`skills/idea-to-solution/assets/`](skills/idea-to-solution/assets/) — optional research report and coding handoff templates.
 
 ## How search results are presented
 
@@ -62,16 +62,23 @@ A full idea-to-solution report can include:
 
 The report is presented in the conversation by default. Markdown research reports and coding handoffs are created only when requested.
 
-## Use with Codex
+## Install for an Agent
 
-Install the repository as a personal Codex skill:
+This repository follows the [open Agent Skills format](https://agentskills.io/home). The [`skills` CLI](https://www.skills.sh/docs/cli) can install it for compatible agents and place the complete skill folder, including its references and templates:
 
 ```bash
-mkdir -p ~/.codex/skills
-git clone https://github.com/JarvixGaby/idea-to-solution-skill.git ~/.codex/skills/idea-to-solution
+npx skills add JarvixGaby/idea-to-solution-skill --skill idea-to-solution
 ```
 
-Then start a conversation with a rough idea or a focused request, for example:
+This repository contains one skill. To install it for all supported agents detected by the CLI, use:
+
+```bash
+npx skills add JarvixGaby/idea-to-solution-skill --all
+```
+
+You can also manually copy `skills/idea-to-solution/` into a skill directory supported by your agent. Directory conventions and support vary by agent; check that agent's documentation.
+
+After installation, ask your agent with a rough idea or a focused request, for example:
 
 > I am considering a lightweight tool for a community sports club to coordinate practice schedules. Is this worth exploring, what product patterns should I learn from, and what could I reuse?
 
@@ -82,7 +89,7 @@ Then start a conversation with a rough idea or a focused request, for example:
 ## Boundaries
 
 - The skill supports **research and product discovery**. It does not install, clone, run, or modify candidate projects.
-- Its conclusions depend on the search and reading tools available in the current Codex environment. If live search is unavailable, it marks current repository status as unknown.
+- Its conclusions depend on the search and reading tools available in the current agent environment. If live search is unavailable, it marks current repository status as unknown.
 - Repository descriptions and documentation are evidence to assess, not proof that the software runs or meets every requirement.
 - It is a personal workflow aid, not a substitute for user research or a guarantee that an idea will succeed.
 
@@ -90,7 +97,11 @@ Then start a conversation with a rough idea or a focused request, for example:
 
 ### What is Idea to Solution?
 
-It is a Codex skill for product discovery: it breaks down a software idea from the user’s job to possible solution routes, then checks which parts can be reused from existing GitHub projects.
+It is an Agent Skill for product discovery: it breaks down a software idea from the user’s job to possible solution routes, then checks which parts can be reused from existing GitHub projects.
+
+### Which agents can use it?
+
+It follows the open Agent Skills format and can be installed in compatible agents. Available tools, search access, and support for skill resources vary by agent.
 
 ### Does it build the product?
 
